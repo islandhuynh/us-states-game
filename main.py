@@ -1,8 +1,6 @@
 import pandas
 import turtle
 
-STYLE = ("Comic Sans", 12, "normal")
-
 screen = turtle.Screen()
 screen.setup(width=1000, height=600)
 screen.title("U.S. States Game")
@@ -27,7 +25,14 @@ while len(states_list) > 0:
     state_name.write(answer_state, align="center")
 
     states_list.remove(answer_state)
-  if answer_state == "stop":
+  if answer_state == "Exit":
     break
+
+missing_states_dict = {
+  "states": states_list
+}
+
+missing_states = pandas.DataFrame(missing_states_dict)
+missing_states.to_csv("missing_states.csv")
 
 turtle.mainloop()
